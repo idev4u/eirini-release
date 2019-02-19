@@ -88,7 +88,7 @@ spec:
             type: Directory
       containers:
       - name: bits
-        image: kiranjain2/bits-service:latest
+        image: normansutorius/bits-service:latest
         imagePullPolicy: Always
         restartPolicy: OnFailure
         ports:
@@ -145,6 +145,7 @@ spec:
 {{- end }}
 
 # RootFs Pied Piper
+---
 apiVersion: batch/v1
 kind: Job
 metadata:
