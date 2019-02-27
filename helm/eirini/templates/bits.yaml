@@ -88,7 +88,7 @@ spec:
             type: Directory
       containers:
       - name: bits
-        image: normansutorius/bits-service:latest
+        image: flintstonecf/bits-service:2.24.0
         imagePullPolicy: Always
         restartPolicy: OnFailure
         ports:
@@ -149,7 +149,7 @@ spec:
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: "bits-pied-pieper"
+  name: "downlaod-eirini-rootfs"
 spec:
   template:
     spec:
@@ -160,8 +160,8 @@ spec:
           path: /bits/assets/
           type: DirectoryOrCreate
       containers:
-      - name: "bits-pied-pieper"
-        image: normansutorius/bits-pied-pieper:latest
+      - name: "downlaod-eirini-rootfs"
+        image: flintstonecf/bits-basic-toolbox:latest
         command: ["/bin/sh", "-c", "curl -X GET -L $(curl https://api.github.com/repos/cloudfoundry-incubator/eirinifs/releases/latest | jq '.assets[].browser_download_url' | tr -d '\"') --output /assets/eirinifs.tar"]
         volumeMounts:
         - name: bits-assets
