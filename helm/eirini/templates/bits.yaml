@@ -108,11 +108,6 @@ spec:
         - name: bits-assets
           mountPath: /assets/
         restartPolicy: "OnFailure"
-        volumes:
-        - name: bits-assets
-          hostPath:
-            path: /bits/assets/
-            type: DirectoryOrCreate
 
 # Service
 ---
