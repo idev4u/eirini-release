@@ -85,7 +85,7 @@ spec:
         - name: bits-assets
           hostPath:
             path: /bits/assets/
-            type: Directory
+            type: DirectoryOrCreate
       containers:
       - name: bits
         image: flintstonecf/bits-service:2.24.0
