@@ -100,6 +100,19 @@ spec:
           mountPath: /workspace/jobs/bits-service/certs
         - name: bits-assets
           mountPath: /assets/
+      initCcontainers:
+      - name: "download-eirini-rootfs"
+        image: flintstonecf/bits-basic-toolbox:latest
+        command: ["/bin/sh", "-c", "curl -X GET -L $(curl https://api.github.com/repos/cloudfoundry-incubator/eirinifs/releases/latest | jq '.assets[].browser_download_url' | tr -d '\"') --output /assets/eirinifs.tar"]
+        volumeMounts:
+        - name: bits-assets
+          mountPath: /assets/
+        restartPolicy: "OnFailure"
+        volumes:
+        - name: bits-assets
+          hostPath:
+            path: /bits/assets/
+            type: DirectoryOrCreate
 
 # Service
 ---
@@ -143,26 +156,3 @@ spec:
               serviceName: bits
               servicePort: 8888
 {{- end }}
-
-# RootFs Pied Piper
----
-apiVersion: batch/v1
-kind: Job
-metadata:
-  name: "downlaod-eirini-rootfs"
-spec:
-  template:
-    spec:
-      restartPolicy: "OnFailure"
-      volumes:
-      - name: bits-assets
-        hostPath:
-          path: /bits/assets/
-          type: DirectoryOrCreate
-      containers:
-      - name: "downlaod-eirini-rootfs"
-        image: flintstonecf/bits-basic-toolbox:latest
-        command: ["/bin/sh", "-c", "curl -X GET -L $(curl https://api.github.com/repos/cloudfoundry-incubator/eirinifs/releases/latest | jq '.assets[].browser_download_url' | tr -d '\"') --output /assets/eirinifs.tar"]
-        volumeMounts:
-        - name: bits-assets
-          mountPath: /assets/
