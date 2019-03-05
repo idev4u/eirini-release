@@ -102,7 +102,7 @@ spec:
           mountPath: /assets/
       initContainers:
       - name: "download-eirini-rootfs"
-        image: ibmtozi/eirinifs-downloader:latest
+        image: flintstonecf/eirinifs-downloader:latest
         command: ["/bin/sh", "-c", "./eirini-rootfs-downloader.sh"]
         volumeMounts:
         - name: bits-assets
