@@ -2,5 +2,8 @@ dependencies:
 - name: eirini
   repository: file://../eirini
   version: 0.0.0-dev
-digest: sha256:27b6bbd29b813e5630b5049ed933b153e1adb195c0ee866a995042cf3842d813
-generated: 2019-02-12T13:38:18.904185688+01:00
+- name: bits
+  repository: https://kiranjain2.github.io/bits
+  version: 0.0.0-dev
+digest: sha256:63ff2287f37f7db4792d23fcc5cf9961fe4ae114cf6b946720805758cc462006
+generated: 2019-04-16T13:15:31.361336022+02:00
