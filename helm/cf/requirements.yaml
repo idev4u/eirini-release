@@ -2,3 +2,6 @@ dependencies:
   - name: eirini
     version: 0.0.0-dev
     repository: file://../eirini
+  - name: bits
+    version: 0.0.1-dev
+    repository: https://kiranjain2.github.io/bits/
