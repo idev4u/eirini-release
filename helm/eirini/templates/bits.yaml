@@ -132,7 +132,11 @@ spec:
         image: flintstonecf/eirinifs-downloader:2.26.0-dev.8
         env:
         - name: EIRINI_ROOTFS_VERSION
+<<<<<<< HEAD
           value: {{ .Values.opi.rootfs_version }}
+=======
+          value: {{ .Values.opi.rootfs_tag }}
+>>>>>>> c220597812f91bdfb8c00d150370059a4c7b0045
         command: ["/bin/sh", "-c", "./eirini-rootfs-downloader.sh"]
         volumeMounts:
         - name: bits-assets

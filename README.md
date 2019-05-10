@@ -46,10 +46,17 @@ This is a `helm` release for Project [Eirini](https://code.cloudfoundry.org/eiri
 
     **NOTICE**
 
+<<<<<<< HEAD
     The above command will take the default value for `rootfs_version`. In case you want to specify a rootfs_version at deploy time use
 
     ```bash   
     --set "eirini.opi.rootfs_version=x.x.x"
+=======
+    The above command will take the default value for `rootfs_tag`. In case you want to specify a rootfs_version at deploy time use
+
+    ```bash   
+    --set "eirini.opi.rootfs_tag=x.x.x" 
+>>>>>>> c220597812f91bdfb8c00d150370059a4c7b0045
     ```
 
 This will download the mentioned version of `eirinifs.tar`. (see [eirinifs releases](https://github.com/cloudfoundry-incubator/eirinifs/releases))
